@@ -56,19 +56,19 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-image: url(/img/Page_1_3.png), url(/img/Page_1.png), url(/img/Group.png), url(/img/background-01.png);
+  background-image: url(../img/Page_1_3.png), url(../img/Page_1.png), url(../img/Group.png), url(../img/background-01.png);
   background-size: auto, auto, auto, cover;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
   background-position: 30% top, left bottom, right bottom, center center; }
   @media only screen and (max-width: 768px) {
     .main-container {
-      background-image: url(/img/Page_1_3.png), url(/img/Page_1.png), none, url(/img/background-01.png);
+      background-image: url(../img/Page_1_3.png), url(../img/Page_1.png), none, url(../img/background-01.png);
       background-size: auto, auto, auto, cover;
       background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
       background-position: left top, left bottom, right bottom, center center; } }
   @media only screen and (max-width: 425px) {
     .main-container {
-      background-image: none, none, none, url(/img/background-01.png); } }
+      background-image: none, none, none, url(../img/background-01.png); } }
   @media only screen and (max-width: 320px) {
     .main-container .logo {
       width: 85%;
