@@ -1,0 +1,189 @@
+@import "var";
+
+@mixin cf {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin size-font($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin background($img-uri, $size: cover, $pos: center center) {
+  background: url($img-uri) no-repeat $pos;
+  -webkit-background-size: $size;
+  -moz-background-size: $size;
+  -o-background-size: $size;
+  background-size: $size;
+}
+
+@mixin hidden {
+  display: none;
+  visibility: hidden;
+}
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin trans($args:300ms) {
+  -webkit-transition: all $args ease-in-out;
+  -moz-transition: all $args ease-in-out;
+  -ms-transition: all $args ease-in-out;
+  -o-transition: all $args ease-in-out;
+  transition: all $args ease-in-out;
+}
+
+//
+//
+//Z _INDEX
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+    @return null;
+  }
+}
+
+$z-indexes: (
+        "outdated-browser",
+        "modal",
+        "site-header",
+        "page-wrapper",
+        "site-footer"
+);
+
+//
+//
+//ANIMATION
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+//
+//
+//MEDIA
+$breakpoints: (
+        "phone": 400px,
+        "phone-wide": 480px,
+        "phablet": 560px,
+        "tablet-small": 640px,
+        "tablet": 768px,
+        "tablet-wide": 1024px,
+        "desktop": 1248px,
+        "desktop-wide": 1440px
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+//$wide_screens_1280: 1280px;
+$wide_screens: 1280px;
+$tablet_portrait: 768px;
+
+$phone_6plus: 425px;
+$phone_6: 375px;
+$phone_5: 320px;
+
+$phone_land: 736px;
+$landscape: landscape;
+@mixin respond-to($media) {
+  @if $media == phone_5 {
+    @media only screen and (max-width: $phone_5) {
+      @content;
+    }
+  } @else if $media == phone_6 {
+    @media only screen and (max-width: $phone_6) {
+      @content;
+    }
+  } @else if $media == phone_6plus {
+    @media only screen and (max-width: $phone_6plus) {
+      @content;
+    }
+  } @else if $media == tablet_portrait {
+    @media only screen and (max-width: $tablet_portrait) {
+      @content;
+    }
+  } @else if $media == wide_screens {
+    @media only screen and (max-width: $wide_screens) {
+      @content;
+    }
+  }
+
+  @if $media == landscape_orient {
+    @media only screen and (max-width: $phone_land) and (orientation: $landscape) {
+      @content;
+    }
+  }
+}
+
+
+
+

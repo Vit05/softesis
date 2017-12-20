@@ -1,0 +1,172 @@
+@import "reset";
+@import "var";
+@import "mixins";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&subset=latin-ext');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  max-width: 960px;
+  width: 100%;
+  @include cf;
+    &.main-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &.footer{
+      flex-direction: column;
+    }
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url(/img/Page_1_3.png),
+                    url(/img/Page_1.png),
+                    url(/img/Group.png),
+                    url(/img/background-01.png);
+  background-size:  auto,
+                    auto,
+                    auto,
+                    cover;
+  background-repeat:  no-repeat,
+                      no-repeat,
+                      no-repeat,
+                      no-repeat;
+  background-position:  30% top,
+                        left bottom,
+                        right bottom,
+                        center center;
+  @include respond-to(tablet_portrait){
+    background-image: url(/img/Page_1_3.png),
+                      url(/img/Page_1.png),
+                      none,
+                      url(/img/background-01.png);
+    background-size:  auto,
+                      auto,
+                      auto,
+                      cover;
+    background-repeat:  no-repeat,
+                        no-repeat,
+                        no-repeat,
+                        no-repeat;
+    background-position:  left top,
+                          left bottom,
+                          right bottom,
+                          center center;
+  }
+  @include respond-to(phone_6plus){
+    background-image: none,
+                      none,
+                      none,
+                      url(/img/background-01.png);
+
+  }
+  @include respond-to(phone_5){
+    .logo{
+      width: 85%;
+      display: block;
+      img{
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+  .button {
+    a {
+      width: 300px;
+      height: 300px;
+      background-image: linear-gradient(132deg, $evergreen, $pine-green);
+      box-shadow: 0 0 44px 0 #fffec7, inset 0 3px 17px 0 #000000;
+      border-image-source: linear-gradient(134deg, #89ebf1, #e0e0b1);
+      border-image-slice: 1;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 30px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.4px;
+      color: #fff;
+      @include respond-to(phone_5){
+        width: 250px;
+        height: 250px;
+        font-size: 24px;
+      }
+    }
+  }
+  .mail-to{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    margin-bottom: 30px;
+    text-decoration: none;
+    span{
+      display: block;
+      margin-left: 10px;
+      color: #fff;
+    }
+
+  }
+  .footer-info{
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    width: 100%;
+    @include respond-to(phone_6plus){
+        flex-wrap: wrap;
+      //flex-basis: 300px;
+      width: 260px;
+
+    }
+    li{
+      font-size: 12px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: 0.6px;
+      color: $duck-egg-blue;
+      @include respond-to(phone_6plus){
+        &:first-of-type{
+          flex-basis: 100%;
+          text-align: center;
+
+        }
+        &:nth-of-type(2){
+          flex-basis: 100%;
+          text-align: center;
+        }
+        &:nth-of-type(3){
+          flex-basis: 65%;
+          text-align: left;
+        }
+        &:nth-of-type(4){
+          flex-basis: 35%;
+          text-align: right;
+        }
+        flex-basis: 50%;
+        margin-bottom: 5px;
+        //outline: 1px solid red;
+
+      }
+    }
+  }
+}
+
