@@ -13,61 +13,64 @@ var gulp = require('gulp'),
     rimraf = require('rimraf'),
     browserSync = require('browser-sync'),
 //    spritesmith = require('gulp.spritesmith-multi'),
-    rename = require("gulp-rename"),
-    reload = browserSync.reload;
+    rename = require('gulp-rename'),
+    reload = browserSync.reload,
+    plumber = require('gulp-plumber');
 
 var path = {
   build: { //Тут мы укажем куда складывать готовые после сборки файлы
-    html: 'build/',
-    js: 'build/js/',
-    css: 'build/css/',
-    img: 'build/img/',
+    html:  'build/',
+    js:    'build/js/',
+    css:   'build/css/',
+    img:   'build/img/',
     fonts: 'build/fonts/',
   },
-  src: { //Пути откуда брать исходники
-    html: 'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-    js: 'src/js/*.js',//В стилях и скриптах нам понадобятся только main файлы
+  src:   { //Пути откуда брать исходники
+    html:  'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
+    js:    'src/js/*.js',//В стилях и скриптах нам понадобятся только main файлы
     style: 'src/styles/**/*.scss',
-    img: 'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
+    img:   'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
     fonts: 'src/fonts/**/*.*',
   },
   watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-    html: 'src/**/*.html',
-    js: 'src/js/**/*.js',
+    html:  'src/**/*.html',
+    js:    'src/js/**/*.js',
     style: 'src/styles/**/*.scss',
-    img: 'src/img/**/*.*',
+    img:   'src/img/**/*.*',
     fonts: 'src/fonts/**/*.*',
   },
   clean: './build',
 };
 
 var config = {
-  server: {
+  server:    {
     baseDir: './build',
   },
-  tunnel: true,
-  host: 'localhost',
-  port: 7000,
+  tunnel:    true,
+  host:      'localhost',
+  port:      7000,
   logPrefix: 'Frontend_Devil',
 };
 
-gulp.task('sprite', function () {
-  return gulp.src('src/img/sprite/**/*.png')
-  .pipe(spritesmith())
-  .on('error', function (err) {
-    console.log(err)
-  })
-  .pipe(gulp.dest('build/css/sprites/'))
-})
+gulp.task('sprite', function() {
+  return gulp.src('src/img/sprite/**/*.png').
+      pipe(spritesmith()).
+      on('error', function(err) {
+        console.log(err);
+      }).
+      pipe(gulp.dest('build/css/sprites/'));
+});
 
 gulp.task('html:build', function() {
   gulp.src(path.src.html) //Выберем файлы по нужному пути
+      .pipe(plumber())
       .pipe(gulp.dest(path.build.html)) //Выплюнем их в папку build
       .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
 
 gulp.task('js:build', function() {
   gulp.src(path.src.js) //Найдем наш main файл
+      .pipe(plumber())
       .pipe(sourcemaps.init()) //Инициализируем sourcemap
       .pipe(uglify()) //Сожмем наш js
       .pipe(sourcemaps.write()) //Пропишем карты
@@ -77,13 +80,13 @@ gulp.task('js:build', function() {
 
 gulp.task('style:build', function() {
   gulp.src(path.src.style) //Выберем наш main.scss
+      .pipe(plumber())
       .pipe(sass({
         includePaths: require('node-reset-scss').includePath,
       })) //Скомпилируем
       .pipe(prefixer()) //Добавим вендорные префиксы
       .pipe(cssmin()) //Сожмем
-      .pipe(rename({suffix: '.min'}))
-      .pipe(gulp.dest(path.build.css)) //И в build
+      .pipe(rename({suffix: '.min'})).pipe(gulp.dest(path.build.css)) //И в build
       .pipe(reload({stream: true}));
 });
 
@@ -92,8 +95,8 @@ gulp.task('image:build', function() {
       .pipe(imagemin({ //Сожмем их
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
-        use: [pngquant()],
-        interlaced: true,
+        use:         [pngquant()],
+        interlaced:  true,
       })).pipe(gulp.dest(path.build.img)) //И бросим в build
       .pipe(reload({stream: true}));
 });
@@ -107,7 +110,7 @@ gulp.task('build', [
   // 'js:build',
   'style:build',
 //  'fonts:build',
-   'image:build',
+  'image:build',
 
 ]);
 
@@ -138,6 +141,5 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('default', ['build', 'webserver', 'watch']);
-
 
 //npm install --save-dev gulp-watch gulp-autoprefixer gulp-uglify gulp-sass gulp-sourcemaps gulp-clean-css gulp-imagemin imagemin-pngquant rimraf browser-sync node-reset-scss

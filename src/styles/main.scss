@@ -7,15 +7,24 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+a{
+  text-decoration: none;
+}
+
 .container {
   max-width: 960px;
   width: 100%;
+  box-sizing: border-box;
   @include cf;
-    &.main-item {
+  @include push--auto;
+  @include respond-to(tablet_portrait){
+    padding: 0 20px;
+  }
+  &.main-item {
     display: flex;
     align-items: center;
     justify-content: center;
-    &.footer{
+    &.footer-main {
       flex-direction: column;
     }
   }
@@ -29,51 +38,51 @@ body {
   height: 100vh;
   width: 100%;
   background-image: url(../img/Page_1_3.png),
-                    url(../img/Page_1.png),
-                    url(../img/Group.png),
-                    url(../img/background-01.png);
-  background-size:  auto,
-                    auto,
-                    auto,
-                    cover;
-  background-repeat:  no-repeat,
-                      no-repeat,
-                      no-repeat,
-                      no-repeat;
-  background-position:  30% top,
-                        left bottom,
-                        right bottom,
-                        center center;
-  @include respond-to(tablet_portrait){
+  url(../img/Page_1.png),
+  url(../img/Group.png),
+  url(../img/background-01.png);
+  background-size: auto,
+  auto,
+  auto,
+  cover;
+  background-repeat: no-repeat,
+  no-repeat,
+  no-repeat,
+  no-repeat;
+  background-position: 30% top,
+  left bottom,
+  right bottom,
+  center center;
+  @include respond-to(tablet_portrait) {
     background-image: url(../img/Page_1_3.png),
-                      url(../img/Page_1.png),
-                      none,
-                      url(../img/background-01.png);
-    background-size:  auto,
-                      auto,
-                      auto,
-                      cover;
-    background-repeat:  no-repeat,
-                        no-repeat,
-                        no-repeat,
-                        no-repeat;
-    background-position:  left top,
-                          left bottom,
-                          right bottom,
-                          center center;
+    url(../img/Page_1.png),
+    none,
+    url(../img/background-01.png);
+    background-size: auto,
+    auto,
+    auto,
+    cover;
+    background-repeat: no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
+    background-position: left top,
+    left bottom,
+    right bottom,
+    center center;
   }
-  @include respond-to(phone_6plus){
+  @include respond-to(phone_6plus) {
     background-image: none,
-                      none,
-                      none,
-                      url(../img/background-01.png);
+    none,
+    none,
+    url(../img/background-01.png);
 
   }
-  @include respond-to(phone_5){
-    .logo{
+  @include respond-to(phone_5) {
+    .logo {
       width: 85%;
       display: block;
-      img{
+      img {
         display: block;
         max-width: 100%;
       }
@@ -99,74 +108,285 @@ body {
       line-height: normal;
       letter-spacing: 0.4px;
       color: #fff;
-      @include respond-to(phone_5){
+      @include respond-to(phone_5) {
         width: 250px;
         height: 250px;
         font-size: 24px;
       }
     }
   }
-  .mail-to{
+
+
+}
+
+
+
+
+//
+//
+//VACANCY LIST PAGE
+.header {
+  background-image: url(../img/PageHeader.png),
+                    url(../img/GroupHeader.png),
+                    url(../img/background-header.png);
+  background-size: auto,
+                    auto,
+                    cover;
+  background-repeat: no-repeat,
+                      no-repeat,
+                      no-repeat;
+  background-position: 20% center,
+                      right bottom,
+                      center center;
+  .header-nav{
+    height: 150px;
+    //outline: 1px solid red;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    font-size: 18px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: 0.4px;
-    margin-bottom: 30px;
-    text-decoration: none;
-    span{
-      display: block;
-      margin-left: 10px;
-      color: #fff;
+    @include respond-to(tablet_portrait){
+      flex-direction: column;
+      justify-content: space-around;
     }
 
-  }
-  .footer-info{
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    width: 100%;
-    @include respond-to(phone_6plus){
-        flex-wrap: wrap;
-      //flex-basis: 300px;
-      width: 260px;
-
-    }
-    li{
-      font-size: 12px;
-      font-weight: normal;
-      font-style: normal;
-      font-stretch: normal;
-      line-height: 1.5;
-      letter-spacing: 0.6px;
-      color: $duck-egg-blue;
-      @include respond-to(phone_6plus){
-        &:first-of-type{
-          flex-basis: 100%;
-          text-align: center;
-
+    .nav-item{
+      //outline: 1px solid orangered;
+      display: flex;
+      .mail-to{
+        margin-bottom: 0;
+      }
+      .logo{
+        width: 245px;
+        display: block;
+        img{
+          display: block;
+          max-width: 100%;
         }
-        &:nth-of-type(2){
-          flex-basis: 100%;
-          text-align: center;
-        }
-        &:nth-of-type(3){
-          flex-basis: 65%;
-          text-align: left;
-        }
-        &:nth-of-type(4){
-          flex-basis: 35%;
-          text-align: right;
-        }
-        flex-basis: 50%;
-        margin-bottom: 5px;
-        //outline: 1px solid red;
-
       }
     }
   }
 }
 
+.careers-container{
+  background-image: linear-gradient(to bottom, #041a21, #050a11);
+  .description{
+    max-width: 600px;
+    width: 100%;
+    color: $white;
+    box-sizing: border-box;
+    padding: 100px 0 125px 0;
+    h2{
+      font-size: 24px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.4px;
+      margin-bottom: 28px;
+    }
+
+    .description-item{
+      p{
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.56;
+        letter-spacing: 0.4px;
+        text-align: left;
+        margin-bottom: 90px;
+      }
+    }
+
+  }
+}
+
+.vacancy-list{
+  //background-color: #faf;
+  .vacancy-list-item{
+    display: block;
+    //outline: 1px solid red;
+    margin: 0 0 30px 0;
+    a{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 25px;
+      letter-spacing: 0.4px;
+      color: #57c7ff;
+      margin-bottom: 5px;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    span{
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 25px;
+      letter-spacing: 0.4px;
+      color: $white;
+      &.location{
+        &::after{
+          content: '|';
+          display: inline-block;
+          margin: 0 5px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+//ELEMENTS
+.mail-to {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.4px;
+  margin-bottom: 30px;
+  text-decoration: none;
+  span {
+    display: block;
+    margin-left: 10px;
+    color: #fff;
+  }
+
+}
+
+.careers-btn{
+  text-align: center;
+  width: 150px;
+  height: 30px;
+  background-color: $white;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 0.5px;
+  color: #193038;
+  border:1px solid $white;
+  box-sizing: border-box;
+  @include trans();
+  &:hover{
+    background-color: transparent;
+    color: $white;
+  }
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+  padding: 0;
+  width: 100%;
+  //outline: 1px solid red;
+  @include respond-to(phone_6plus) {
+    flex-wrap: wrap;
+    //flex-basis: 300px;
+    width: 260px;
+
+  }
+  li {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: 0.6px;
+    color: $duck-egg-blue;
+    @include respond-to(phone_6plus) {
+      &:first-of-type {
+        flex-basis: 100%;
+        text-align: center;
+
+      }
+      &:nth-of-type(2) {
+        flex-basis: 100%;
+        text-align: center;
+      }
+      &:nth-of-type(3) {
+        flex-basis: 65%;
+        text-align: left;
+      }
+      &:nth-of-type(4) {
+        flex-basis: 35%;
+        text-align: right;
+      }
+      flex-basis: 50%;
+      margin-bottom: 5px;
+      //outline: 1px solid red;
+
+    }
+  }
+}
+
+.footer{
+  background-color: $pine-green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  box-sizing: border-box;
+  .to-top{
+    background-image: linear-gradient(132deg, $evergreen, $pine-green);
+    box-shadow: inset 0 3px 17px 0 rgba(0, 0, 0, 0.5);
+    border: solid 1px $white;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: -50px;
+    margin-bottom: 50px;
+    color: $white;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 50px;
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    position: relative;
+
+    &::before{
+      position: absolute;
+      width: 23px;
+      height: 2px;
+      display: block;
+      content: '';
+      background-color:$white;
+      left: 29px;
+      top: 30px;
+      transform: rotate(-45deg);
+      @include trans()
+    }
+    &::after{
+      position: absolute;
+      width: 23px;
+      height: 2px;
+      display: block;
+      content: '';
+      background-color:$white;
+      right: 29px;
+      top: 30px;
+      transform: rotate(45deg);
+      @include trans()
+    }
+    &:hover{
+      &::before{
+
+        top: 20px;
+      }
+      &::after{
+
+        top: 20px;
+      }
+    }
+  }
+
+}
