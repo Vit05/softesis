@@ -138,20 +138,30 @@ a {
 
 .careers-container {
   background-image: linear-gradient(to bottom, #041a21, #050a11); }
-  .careers-container .description {
-    max-width: 600px;
-    width: 100%;
-    color: #ffffff;
-    box-sizing: border-box;
-    padding: 100px 0 125px 0; }
-    .careers-container .description h2 {
+  .careers-container .vacancy-container {
+    display: flex;
+    flex-direction: row; }
+    @media only screen and (max-width: 425px) {
+      .careers-container .vacancy-container {
+        flex-direction: column; } }
+    .careers-container .vacancy-container h2 {
       font-size: 24px;
       font-weight: bold;
       font-style: normal;
       font-stretch: normal;
       line-height: normal;
       letter-spacing: 0.4px;
-      margin-bottom: 28px; }
+      margin-bottom: 28px;
+      color: #ffffff; }
+  .careers-container .description {
+    max-width: 600px;
+    width: 100%;
+    color: #ffffff;
+    box-sizing: border-box;
+    padding: 100px 20px 125px 0; }
+    @media only screen and (max-width: 425px) {
+      .careers-container .description {
+        padding: 100px 0 125px 0; } }
     .careers-container .description .description-item p {
       font-size: 16px;
       font-weight: 500;
@@ -161,6 +171,76 @@ a {
       letter-spacing: 0.4px;
       text-align: left;
       margin-bottom: 90px; }
+    .careers-container .description .details-description-item {
+      padding-right: 50px; }
+      @media only screen and (max-width: 425px) {
+        .careers-container .description .details-description-item {
+          padding-right: 0; } }
+      .careers-container .description .details-description-item .company-logo {
+        margin-bottom: 30px; }
+      .careers-container .description .details-description-item h2 {
+        margin-bottom: 10px; }
+      .careers-container .description .details-description-item h3 {
+        font-size: 18px;
+        font-weight: bold;
+        line-height: 25px;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: #ffffff;
+        margin-bottom: 30px; }
+      .careers-container .description .details-description-item .location {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: #e0fbfc;
+        margin-bottom: 30px;
+        display: block; }
+      .careers-container .description .details-description-item p {
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 25px;
+        letter-spacing: 0.4px;
+        text-align: left;
+        margin-bottom: 90px; }
+      .careers-container .description .details-description-item li {
+        padding-left: 20px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0.4px;
+        text-align: left;
+        color: #ffffff;
+        position: relative;
+        margin-bottom: 20px; }
+        .careers-container .description .details-description-item li::before {
+          border-radius: 50%;
+          position: absolute;
+          top: 5px;
+          left: 0;
+          width: 10px;
+          height: 10px;
+          display: block;
+          content: '';
+          background-color: #57c6fd; }
+  .careers-container .form-container {
+    box-sizing: border-box;
+    padding-top: 150px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 360px; }
+    @media only screen and (max-width: 425px) {
+      .careers-container .form-container {
+        max-width: none;
+        padding: 0 0 100px 0; } }
+    .careers-container .form-container .form {
+      position: sticky;
+      top: 20px; }
 
 .vacancy-list .vacancy-list-item {
   display: block;
@@ -317,5 +397,94 @@ a {
       top: 20px; }
     .footer .to-top:hover::after {
       top: 20px; }
+
+.form {
+  width: 100%; }
+
+.input-group {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px; }
+  .input-group input {
+    height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-align: left;
+    color: #ffffff;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 15px;
+    border: 1px solid #ffffff;
+    background-color: transparent; }
+    .input-group input.placeholder {
+      color: #ffffff; }
+    .input-group input:-moz-placeholder {
+      color: #ffffff; }
+    .input-group input::-moz-placeholder {
+      color: #ffffff; }
+    .input-group input:-ms-input-placeholder {
+      color: #ffffff; }
+    .input-group input::-webkit-input-placeholder {
+      color: #ffffff; }
+    .input-group input[type="submit"] {
+      outline: 0;
+      border: 1px solid #57c6fd;
+      text-transform: uppercase;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      text-align: center;
+      color: #ffffff;
+      background-color: #57c6fd;
+      cursor: pointer;
+      -webkit-transition: all 300ms ease-in-out;
+      -moz-transition: all 300ms ease-in-out;
+      -ms-transition: all 300ms ease-in-out;
+      -o-transition: all 300ms ease-in-out;
+      transition: all 300ms ease-in-out; }
+      .input-group input[type="submit"]:hover {
+        background-color: transparent;
+        color: #57c6fd; }
+  .input-group .attach {
+    width: 50%;
+    display: block;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #57c6fd;
+    outline: 0;
+    line-height: 30px;
+    border: 1px solid #57c6fd;
+    margin: 30px 0;
+    cursor: pointer;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+    .input-group .attach:hover {
+      background-color: #57c6fd;
+      color: #ffffff; }
+  .input-group .textarea {
+    background-color: transparent;
+    box-sizing: border-box;
+    border: 1px solid #ffffff;
+    width: 100%;
+    height: 250px;
+    color: #ffffff;
+    padding: 5px 15px; }
+    .input-group .textarea.placeholder {
+      color: #ffffff; }
+    .input-group .textarea:-moz-placeholder {
+      color: #ffffff; }
+    .input-group .textarea::-moz-placeholder {
+      color: #ffffff; }
+    .input-group .textarea:-ms-input-placeholder {
+      color: #ffffff; }
+    .input-group .textarea::-webkit-input-placeholder {
+      color: #ffffff; }
 
 /*# sourceMappingURL=main.css.map */
