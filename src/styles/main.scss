@@ -91,6 +91,7 @@ a {
   .button {
     a {
       width: 300px;
+      position: relative;
       height: 300px;
       background-image: linear-gradient(132deg, $evergreen, $pine-green);
       box-shadow: 0 0 44px 0 #fffec7, inset 0 3px 17px 0 #000000;
@@ -108,6 +109,10 @@ a {
       line-height: normal;
       letter-spacing: 0.4px;
       color: #fff;
+      animation: pulse 1.5s infinite;
+      &:hover{
+        animation: pulse .5s infinite;
+      }
       @include respond-to(phone_5) {
         width: 250px;
         height: 250px;
@@ -552,4 +557,19 @@ a {
     }
   }
 
+}
+
+
+@keyframes pulse {
+  0% {
+     transform: scale(.9);
+  }
+  70% {
+    transform:scale(1);
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+  100% {
+    transform:scale(.9);
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+  }
 }
