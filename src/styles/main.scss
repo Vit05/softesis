@@ -53,6 +53,12 @@ a {
   left bottom,
   right bottom,
   center center;
+  @media #{$retina}{
+    background-image: url(../img/Page_1_3@2x.png),
+    url(../img/Page_1@2x.png),
+    url(../img/Group@2x.png),
+    url(../img/background-01@2x.png);
+  }
   @include respond-to(tablet_portrait) {
     background-image: url(../img/Page_1_3.png),
     url(../img/Page_1.png),
@@ -139,6 +145,11 @@ a {
   background-position: 20% center,
   right bottom,
   center center;
+  @media #{$retina}{
+    background-image: url(../img/PageHeader@2x.png),
+    url(../img/GroupHeader@2x.png),
+    url(../img/background-header@2x.png);
+  }
   .header-nav {
     height: 150px;
     //outline: 1px solid red;
@@ -468,7 +479,6 @@ a {
     }
     &:hover {
       &::before {
-
         top: 20px;
       }
       &::after {
