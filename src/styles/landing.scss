@@ -13,7 +13,6 @@ a {
 
 .container-full {
 	width: 100%;
-	// background-color: #cdcdcd;
 }
 
 .container {
@@ -27,7 +26,6 @@ a {
 		background-color: transparent;
 		z-index: 50;
 		position: relative;
-		//outline: 1px solid red;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -86,6 +84,7 @@ a {
 				letter-spacing: 0.2px;
 				text-align: center;
 				color: $white;
+				width: 300px;
 			}
 		}
 	}
@@ -104,7 +103,6 @@ a {
 		bottom: 0;
 		flex-direction: column;
 		z-index: 1000;
-		//background-color: #faf;
 		background-image: linear-gradient(326deg, rgb(0, 76, 116), rgb(0, 10, 16));
 		&.opener{
 			display: block;
@@ -122,7 +120,6 @@ a {
 }
 
 .careers-header {
-	// overflow: hidden;
 	height: 300px;
 
 	.careers-title {
@@ -293,7 +290,6 @@ a {
 	padding: 50px 0 100px;
 
 	.provide-item-cont {
-		// background-color: #cdcdcd;
 		display: flex;
 		align-items: flex-start;
 		@include respond-to(phone_6plus){
@@ -304,7 +300,6 @@ a {
 
 		.provide-item {
 			flex-basis: 25%;
-			// outline: 1px solid red;
 			align-items: center;
 			justify-content: center;
 			flex-direction: column;
@@ -349,7 +344,6 @@ a {
 	max-width: 1440px;
 	width: 100%;
 	@include push--auto;
-	// outline: 1px solid green;
 	.use-case-container {
 		display: flex;
 		flex-direction: row;
@@ -360,11 +354,11 @@ a {
 		@include respond-to(phone_6plus){
 			flex-direction: column;
 			align-items: flex-start;
+			overflow: visible;
 		}
 		.use-case-column {
 			flex-basis: 25%;
 			box-sizing: border-box;
-			// outline: 1px solid blue;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-start;
@@ -381,33 +375,24 @@ a {
 
 			&.case-2-12 {
 				height: calc(#{$case-1-6} * 2);
-				// background-color: #adda00;
 			}
 
 			&.case-3-12 {
 				height: calc(#{$case-1-6} * 3);
-				// background-color: #adeee0;
-				// outline: 1px solid red;
 			}
 
 			&.case-4-12 {
 				height: calc(#{$case-1-6} * 4);
-				// background-color: #002a00;
 			}
 
 			&.case-6-12 {
 				height: calc(#{$case-1-6}*6);
-				// background-color: #ad1100;
 			}
 
 			&.case-8-12 {
 				height: calc(#{$case-1-6}*8);
-				// background-color: #00ee57;
 			}
 
-			img {
-				// @include trans(700ms);
-			}
 
 			.use-case-description {
 				@include trans(700ms);
@@ -416,7 +401,7 @@ a {
 				top: 0;
 				right: 0;
 				bottom: 0;
-				display: block;
+				//display: block;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -459,9 +444,7 @@ a {
 
 				.use-case-description {
 					opacity: 1;
-					// -webkit-backdrop-filter: blur(5px);
-					// backdrop-filter: blur(5px);
-					// background-color: rgb(0, 69, 106);
+
 				}
 			}
 		}
@@ -475,28 +458,26 @@ a {
 	left: 0;
 	right: 0;
 	width: 100%;
-	// background-color: rgba(0,0,0,0.5);
 	z-index: 200;
 	background-image: url("../img/landing/group10@2x.jpg");
 	display: block;
-	// overflow: hidden;
-	// @include trans(700ms);
 	transform: scale(0);
 	opacity: 0;
 	visibility: visible;
-	// -webkit-backdrop-filter: blur(10px);
-	// backdrop-filter: blur(10px);
-	// background-image: linear-gradient(302deg, rgba(0, 76, 116, 0.5), rgba(0, 10, 16, 0.5));
-	box-shadow: inset 0 -3px 5px 0 rgba(0, 0, 0, 0.5);
-	visibility: visible;
-	box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.26);
 	background-size: 100%;
 	@include respond-to(phone_6plus){
+		transform: scale(1);
+		opacity: 1;
+		visibility: hidden;
+		display: none;
 		&.show-mob-desc{
-			//position: fixed;
-			bottom: auto;
+			visibility: visible;
+			display: block;
+			position: fixed;
+			bottom: 0;
 			transform: scale(1);
 			opacity: 1;
+
 		}
 	}
 
@@ -509,7 +490,6 @@ a {
 	}
 
 	&.show-description {
-		// left: 0;
 		opacity: 1;
 	}
 
@@ -525,7 +505,12 @@ a {
 		justify-content: flex-start;
 		color: $white;
 		background-size: cover;
-		cursor: pointer;
+		box-sizing: border-box;
+		@include respond-to(phone_6plus){
+			align-items: flex-end;
+			padding-bottom: 35px;
+			height: 170px;
+		}
 
 		h2 {
 			font-size: 20px;
@@ -534,23 +519,48 @@ a {
 			letter-spacing: 1.1px;
 			text-align: left;
 			color: $white;
+			@include respond-to(phone_6){
+				font-size: 18px;
+				line-height: 25px;
+				letter-spacing: 1px;
+			}
 		}
 
 		.close-modal {
 			outline: 0;
 			border: 0;
+			padding: 10px;
 			background-color: transparent;
 			position: absolute;
-			right: 25px;
-			top: 25px;
+			right: 20px;
+			top: 20px;
 			background-image: url("../img/landing/close.svg");
-			width: 25px;
-			height: 25px;
+			background-size: 25px;
+			background-position: center center;
+			background-repeat: no-repeat;
+			width: 35px;
+			height: 35px;
+			//cursor: pointer;
+			@include trans(200ms);
+			//outline: 1px solid red;
+			display: block;
+			cursor: pointer;
+			&:hover{
+				transform: rotate(180deg);
+			}
+			svg{
+				cursor: pointer;
+			}
 		}
 	}
 
 	.modal-body {
 		padding: 50px 0;
+		height: 600px;
+		overflow: auto;
+		@include respond-to(phone_6plus){
+			overflow: scroll;
+		}
 	}
 }
 
@@ -559,12 +569,20 @@ a {
 	width: 100%;
 	@include push--auto;
 	box-sizing: border-box;
+	@include respond-to(phone_6plus){
+		padding: 0 20px;
+	}
 
 	&.txt {
 		border-left: 2px solid rgb(0, 170, 255);
 		padding-left: 50px;
 		margin-bottom: 50px;
+		@include respond-to(phone_6plus){
+			border-left: 0;
+			padding-left: 20px;
+			padding-right: 20px;
 
+		}
 		p {
 			font-size: 16px;
 			font-weight: 500;
@@ -679,34 +697,12 @@ a {
 				@include trans();
 				max-width: 200px;
 				width: 100%;
-				//   display: block;
-				//   @include push--auto;
 				&:hover {
 					background-color: transparent;
 					color: $sky-blue-two;
 				}
 			}
 		}
-		// .attach{
-		//   width: 50%;
-		//   display: block;
-		//   height: 30px;
-		//   font-size: 16px;
-		//   font-weight: 400;
-		//   letter-spacing: 0.4px;
-		//   text-align: center;
-		//   color: $sky-blue-two;
-		//   outline: 0;
-		//   line-height: 30px;
-		//   border:1px solid $sky-blue-two;
-		//   margin: 30px 0;
-		//   cursor: pointer;
-		//   @include trans();
-		//   &:hover{
-		//     background-color: $sky-blue-two;
-		//     color: $white;
-		//   }
-		// }
 		.textarea {
 			background-color: transparent;
 			box-sizing: border-box;
@@ -715,6 +711,9 @@ a {
 			height: 250px;
 			color: $white;
 			padding: 5px 15px;
+			font-size: 16px;
+			font-weight: 500;
+			letter-spacing: 0.4px;
 			@include input-placeholder {
 				font-size: 16px;
 				font-weight: 500;
@@ -726,17 +725,16 @@ a {
 
 
 	.contact-form-container {
-		// outline: 1px solid red;
 		display: -webkit-flex;
 		display: -ms-flex;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		justify-content: space-between;
-@include respond-to(phone_6plus){
-	flex-direction: column;
-	padding: 0 20px;
-}
+		@include respond-to(phone_6plus){
+			flex-direction: column;
+			padding: 0 20px;
+		}
 		.input-group {
 			flex-basis: 48%;
 
@@ -763,11 +761,8 @@ a {
 	flex-wrap: wrap;
 	padding: 0;
 	width: 100%;
-	//outline: 1px solid red;
 	@include respond-to(phone_6plus) {
 		flex-wrap: wrap;
-		//flex-basis: 300px;
-		//width: 460px;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
 		box-sizing: border-box;
@@ -775,14 +770,10 @@ a {
 	}
 
 	li {
-		//   flex-basis: 25%;
-		// outline: 1px solid red;
 		font-size: 12px;
 		line-height: 18px;
 		letter-spacing: 0.6px;
-		// text-align: center;
 		color: $purpley-grey;
-		// color: $duck-egg-blue;   v
 		&:first-of-type {
 			flex-basis: 100%;
 			text-align: center;
@@ -832,12 +823,10 @@ a {
 	.to-top {
 		margin-top: -30px;
 		display: block;
-		position: absolute;
 		color: $white;
 		text-align: center;
 		box-sizing: border-box;
 		margin-bottom: 3px;
-		// padding-top: 50px;
 		font-size: 18px;
 		letter-spacing: 0.2px;
 		position: relative;
@@ -868,9 +857,7 @@ a {
 // CAREERS
 
 .careers-container {
-	// background-image: linear-gradient(to bottom, #041a21, #050a11);
 	.back-to-list {
-		// background-color: #DD0000;
 		font-size: 24px;
 		font-weight: 600;
 		line-height: 45px;
@@ -971,16 +958,6 @@ a {
 		@include respond-to(phone_6plus) {
 			flex-direction: column;
 		}
-		// h2 {
-		//   font-size: 24px;
-		//   font-weight: bold;
-		//   font-style: normal;
-		//   font-stretch: normal;
-		//   line-height: normal;
-		//   letter-spacing: 0.4px;
-		//   margin-bottom: 28px;
-		//   color: $charcoal-grey;
-		// }
 	}
 
 	.description {
@@ -1040,9 +1017,6 @@ a {
 					border-bottom: 2px solid $charcoal-grey;
 				}
 			}
-			// h2 {
-			// 	margin-bottom: 10px;
-			// }
 			h3 {
 				font-size: 18px;
 				font-weight: bold;
@@ -1172,10 +1146,8 @@ a {
 }
 
 .vacancy-list {
-	//background-color: #faf;
 	.vacancy-list-item {
 		display: block;
-		//outline: 1px solid red;
 		margin: 0 0 30px;
 
 		a {
@@ -1226,7 +1198,6 @@ a {
 	border-radius: 100%;
 	background: transparent;
 	opacity: 1;
-	// margin: 0 25px;
 	border: 1px solid $white;
 }
 

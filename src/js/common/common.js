@@ -12,18 +12,17 @@ if ($(window).width() < 425) {
 
         var th = $(this);
         var th_el = th.attr("href");
+        var modal_body = $(th_el).find(".modal-body");
+        var modal_header = $(th_el).find(".modal-header");
+        var modal_body_height = $(window).height() - modal_header.height() - 80;
         $(th_el).addClass("show-mob-desc");
-        $(th_el).css("top",$this.offset().top - $(".use-case-container").offset().top);
+        modal_body.css("height",modal_body_height);
 
         $(document).on("click", ".close-modal", function(event) {
-          event.stopPropagation();
+//          event.stopPropagation();
           $(th_el).removeClass("show-mob-desc");
-        })
-        $(document).click(function(event) {
-          if (!$(event.target).is(".use-case-description")) {
-            bgFadeOut(th_el)
-          }
         });
+
         return false;
       }
       $this.toggleClass(onHover);
@@ -45,15 +44,18 @@ else {
     e.preventDefault();
     var th = $(this);
     var th_el = th.attr("href");
-    bgFadeIn(th_el)
+    $('html, body').animate({
+      scrollTop: $("#use_case").offset().top
+    }, 400);
+    bgFadeIn(th_el);
 
     $(document).on("click", ".close-modal", function(event) {
-      event.stopPropagation();
+//      event.stopPropagation();
       bgFadeOut(th_el)
 
     })
     $(document).click(function(event) {
-      if (!$(event.target).is(".use-case-description")) {
+      if (!$(event.target).is(".use-case-description, .case-full-description *, .case-full-description")) {
         bgFadeOut(th_el)
       }
     });
@@ -65,8 +67,11 @@ else {
 $(document).ready(function (){
   $(".to_contact_form").click(function (e){
     e.preventDefault();
+    if ($(window).width() < 425) {
+      $(".header").removeClass("opener");
+    }
     $('html, body').animate({
-      scrollTop: $("#contact_us_form").offset().top
+      scrollTop: $("#contact_us").offset().top
     }, 700);
   });
 
@@ -84,12 +89,13 @@ function bgFadeOut(elem) {
     duration: 400,
     borderRadius: ['0', '50%'],
     easing: 'easeInOutQuad',
+    opacity:0,
     scale: {
       value: [1, 0],
       duration: 200,
       easing: 'easeInOutQuart'
     },
-    delay: 100,
+//    delay: 100,
   });
 }
 
@@ -159,10 +165,6 @@ $("#contact_us_form").validate({
 
 
 
-
-//{
-//  setTimeout(() => document.getElementById('liquid_effect').classList.add('render'), 60);
-//}
 setTimeout(function () {
   return document.getElementById('liquid_effect').classList.add('render');
 }, 60);

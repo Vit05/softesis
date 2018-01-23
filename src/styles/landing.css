@@ -103,7 +103,8 @@ a {
           line-height: 35px;
           letter-spacing: 0.2px;
           text-align: center;
-          color: #ffffff; } }
+          color: #ffffff;
+          width: 300px; } }
 
 .header {
   background-color: transparent;
@@ -318,7 +319,8 @@ a {
     @media only screen and (max-width: 425px) {
       .use-cases-box .use-case-container {
         flex-direction: column;
-        align-items: flex-start; } }
+        align-items: flex-start;
+        overflow: visible; } }
     .use-cases-box .use-case-container .use-case-column {
       flex-basis: 25%;
       box-sizing: border-box;
@@ -358,7 +360,6 @@ a {
         top: 0;
         right: 0;
         bottom: 0;
-        display: block;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -406,15 +407,20 @@ a {
   transform: scale(0);
   opacity: 0;
   visibility: visible;
-  box-shadow: inset 0 -3px 5px 0 rgba(0, 0, 0, 0.5);
-  visibility: visible;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.26);
   background-size: 100%; }
   @media only screen and (max-width: 425px) {
-    .case-full-description.show-mob-desc {
-      bottom: auto;
+    .case-full-description {
       transform: scale(1);
-      opacity: 1; } }
+      opacity: 1;
+      visibility: hidden;
+      display: none; }
+      .case-full-description.show-mob-desc {
+        visibility: visible;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        transform: scale(1);
+        opacity: 1; } }
   .case-full-description .container {
     background-color: #fff;
     height: 100%;
@@ -435,7 +441,12 @@ a {
     justify-content: flex-start;
     color: #ffffff;
     background-size: cover;
-    cursor: pointer; }
+    box-sizing: border-box; }
+    @media only screen and (max-width: 425px) {
+      .case-full-description .modal-header {
+        align-items: flex-end;
+        padding-bottom: 35px;
+        height: 170px; } }
     .case-full-description .modal-header h2 {
       font-size: 20px;
       font-weight: bold;
@@ -443,18 +454,43 @@ a {
       letter-spacing: 1.1px;
       text-align: left;
       color: #ffffff; }
+      @media only screen and (max-width: 375px) {
+        .case-full-description .modal-header h2 {
+          font-size: 18px;
+          line-height: 25px;
+          letter-spacing: 1px; } }
     .case-full-description .modal-header .close-modal {
       outline: 0;
       border: 0;
+      padding: 10px;
       background-color: transparent;
       position: absolute;
-      right: 25px;
-      top: 25px;
+      right: 20px;
+      top: 20px;
       background-image: url("../img/landing/close.svg");
-      width: 25px;
-      height: 25px; }
+      background-size: 25px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 35px;
+      height: 35px;
+      -webkit-transition: all 200ms ease-in-out;
+      -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+      -o-transition: all 200ms ease-in-out;
+      transition: all 200ms ease-in-out;
+      display: block;
+      cursor: pointer; }
+      .case-full-description .modal-header .close-modal:hover {
+        transform: rotate(180deg); }
+      .case-full-description .modal-header .close-modal svg {
+        cursor: pointer; }
   .case-full-description .modal-body {
-    padding: 50px 0; }
+    padding: 50px 0;
+    height: 600px;
+    overflow: auto; }
+    @media only screen and (max-width: 425px) {
+      .case-full-description .modal-body {
+        overflow: scroll; } }
 
 .modal-container {
   max-width: 660px;
@@ -462,10 +498,18 @@ a {
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box; }
+  @media only screen and (max-width: 425px) {
+    .modal-container {
+      padding: 0 20px; } }
   .modal-container.txt {
     border-left: 2px solid #00aaff;
     padding-left: 50px;
     margin-bottom: 50px; }
+    @media only screen and (max-width: 425px) {
+      .modal-container.txt {
+        border-left: 0;
+        padding-left: 20px;
+        padding-right: 20px; } }
     .modal-container.txt p {
       font-size: 16px;
       font-weight: 500;
@@ -571,7 +615,10 @@ a {
       width: 100%;
       height: 250px;
       color: #ffffff;
-      padding: 5px 15px; }
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.4px; }
       .contact-us-box .input-group .textarea.placeholder {
         font-size: 16px;
         font-weight: 500;
@@ -673,7 +720,6 @@ a {
   .footer .to-top {
     margin-top: -30px;
     display: block;
-    position: absolute;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
