@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     sourcemaps = require('gulp-sourcemaps'),
     // rigger = require('gulp-rigger'),
+    concat = require('gulp-concat'),
     cssmin = require('gulp-clean-css'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
@@ -15,19 +16,22 @@ var gulp = require('gulp'),
 //    spritesmith = require('gulp.spritesmith-multi'),
     rename = require('gulp-rename'),
     reload = browserSync.reload,
+    minifyjs = require('gulp-js-minify'),
     plumber = require('gulp-plumber');
 
 var path = {
   build: { //Тут мы укажем куда складывать готовые после сборки файлы
     html:  'build/',
     js:    'build/js/',
+    js_libs:    'build/js/libs',
     css:   'build/css/',
     img:   'build/img/',
     fonts: 'build/fonts/',
   },
   src:   { //Пути откуда брать исходники
     html:  'src/*.html', //Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
-    js:    'src/js/*.js',//В стилях и скриптах нам понадобятся только main файлы
+    js:    'src/js/common/*.js',//В стилях и скриптах нам понадобятся только main файлы
+    js_libs:'src/js/libs/**/*.js',//В стилях и скриптах нам понадобятся только main файлы
     style: 'src/styles/**/*.scss',
     img:   'src/img/**/*.*', //Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
     fonts: 'src/fonts/**/*.*',
@@ -48,7 +52,7 @@ var config = {
   },
   tunnel:    true,
   host:      'localhost',
-  port:      7000,
+  port:      5000,
   logPrefix: 'Frontend_Devil',
 };
 
@@ -68,12 +72,22 @@ gulp.task('html:build', function() {
       .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
 });
 
-gulp.task('js:build', function() {
-  gulp.src(path.src.js) //Найдем наш main файл
+gulp.task('js_libs:build', function() {
+  gulp.src(path.src.js_libs) //Выберем файлы по нужному пути
       .pipe(plumber())
-      .pipe(sourcemaps.init()) //Инициализируем sourcemap
+      .pipe(gulp.dest(path.build.js_libs)) //Выплюнем их в папку build
+      .pipe(reload({stream: true})); //И перезагрузим наш сервер для обновлений
+});
+
+gulp.task('js:build', function () {
+  gulp.src(path.src.js) //Найдем наш main файл
+  // .pipe(sourcemaps.init()) //Инициализируем sourcemap
+      .pipe(concat('common.js'))
       .pipe(uglify()) //Сожмем наш js
-      .pipe(sourcemaps.write()) //Пропишем карты
+      .pipe(minifyjs())
+      .pipe(rename({ suffix: '.min' }))
+  // .pipe(sourcemaps.write()) //Пропишем карты
+
       .pipe(gulp.dest(path.build.js)) //Выплюнем готовый файл в build
       .pipe(reload({stream: true})); //И перезагрузим сервер
 });
@@ -95,7 +109,7 @@ gulp.task('image:build', function() {
       .pipe(imagemin({ //Сожмем их
         progressive: true,
         svgoPlugins: [{removeViewBox: false}],
-        use:         [pngquant()],
+//        use:         [pngquant()],
         interlaced:  true,
       })).pipe(gulp.dest(path.build.img)) //И бросим в build
       .pipe(reload({stream: true}));
@@ -107,8 +121,9 @@ gulp.task('fonts:build', function() {
 
 gulp.task('build', [
   'html:build',
-  // 'js:build',
+   'js:build',
   'style:build',
+  'js_libs:build',
 //  'fonts:build',
   'image:build',
 
@@ -121,9 +136,9 @@ gulp.task('watch', function() {
   watch([path.watch.style], function(event, cb) {
     gulp.start('style:build');
   });
-//  watch([path.watch.js], function(event, cb) {
-//    gulp.start('js:build');
-//  });
+  watch([path.watch.js], function(event, cb) {
+    gulp.start('js:build');
+  });
 //  watch([path.watch.img], function(event, cb) {
 //    gulp.start('image:build');
 //  });
