@@ -1,4 +1,6 @@
 $size:16px;
+$case-height:900px;
+$case-1-6:$case-height/12;
 
 $brownish-grey-two :#686868;
 $dull-orange :#caa334;
@@ -21,5 +23,8 @@ $dark :#1e353a;
 $evergreen :#052731;
 $pine-green :#051920;
 $sky-blue-two: #57c6fd;
+
+$charcoal-grey: #4a4a4a;
+$purpley-grey: #9b9b9b;
 
 $retina: "only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)";
