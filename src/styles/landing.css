@@ -77,6 +77,11 @@ a {
         top: 20px; }
       .nav-container .desk-logo {
         display: none; } }
+  .nav-container .nav-item a {
+    border-bottom: 3px solid transparent;
+    padding-bottom: 5px; }
+  .nav-container .nav-item.active a {
+    border-color: #ffffff; }
   .nav-container a {
     font-size: 16px;
     line-height: 21px;
@@ -95,7 +100,17 @@ a {
       text-align: center;
       display: block;
       height: 35px;
-      line-height: 35px; }
+      line-height: 35px;
+      -webkit-transition: all 300ms ease-in-out;
+      -moz-transition: all 300ms ease-in-out;
+      -ms-transition: all 300ms ease-in-out;
+      -o-transition: all 300ms ease-in-out;
+      transition: all 300ms ease-in-out;
+      border: 0;
+      padding: 00; }
+      .nav-container a.get-started:hover {
+        background-color: #ffffff;
+        color: #4a4a4a; }
       @media only screen and (max-width: 425px) {
         .nav-container a.get-started {
           font-size: 18px;
@@ -103,7 +118,8 @@ a {
           line-height: 35px;
           letter-spacing: 0.2px;
           text-align: center;
-          color: #ffffff; } }
+          color: #ffffff;
+          width: 300px; } }
 
 .header {
   background-color: transparent;
@@ -132,7 +148,7 @@ a {
 
 .careers-header {
   height: 300px; }
-  .careers-header .careers-title {
+  .careers-header .careers-title-header {
     position: relative;
     z-index: 500;
     display: -webkit-flex;
@@ -141,6 +157,10 @@ a {
     align-items: flex-end;
     justify-content: flex-start;
     height: 200px; }
+    @media only screen and (max-width: 425px) {
+      .careers-header .careers-title-header {
+        padding: 0 20px;
+        box-sizing: border-box; } }
   .careers-header h1 {
     font-size: 36px;
     font-weight: 800;
@@ -149,6 +169,15 @@ a {
     text-align: left;
     color: #ffffff;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); }
+    @media only screen and (max-width: 425px) {
+      .careers-header h1 {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 34px;
+        letter-spacing: 1.8px;
+        text-align: left;
+        color: #ffffff;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); } }
   .careers-header #liquid_effect {
     z-index: 10;
     height: 350px;
@@ -180,6 +209,24 @@ a {
   position: relative;
   z-index: 50;
   height: 450px; }
+  .slider-top .slider-btn {
+    max-width: 250px;
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    border: 2px solid #00aaff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    letter-spacing: 2.7px;
+    color: #00aaff;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -125px;
+    z-index: 700; }
   .slider-top .swiper-slide .container {
     height: 400px;
     display: flex;
@@ -204,20 +251,8 @@ a {
           letter-spacing: 1.8px;
           text-align: center;
           color: #ffffff;
-          text-shadow: 0 2px 5px rgba(0, 0, 0, 0.26); } }
-    .slider-top .swiper-slide .container .slider-btn {
-      max-width: 250px;
-      width: 100%;
-      display: block;
-      background-color: transparent;
-      border: 2px solid #00aaff;
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 25px;
-      letter-spacing: 2.7px;
-      color: #00aaff;
-      text-align: center;
-      text-transform: uppercase; }
+          text-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+          padding: 0 20px; } }
 
 .title-container {
   display: flex;
@@ -237,6 +272,10 @@ a {
     border-bottom: 3px solid #4a4a4a;
     padding-bottom: 0;
     display: block; }
+    @media only screen and (max-width: 425px) {
+      .title-container .box-title {
+        letter-spacing: 1px;
+        font-size: 23px; } }
     .title-container .box-title span {
       font-size: 24px;
       font-weight: bold;
@@ -318,7 +357,8 @@ a {
     @media only screen and (max-width: 425px) {
       .use-cases-box .use-case-container {
         flex-direction: column;
-        align-items: flex-start; } }
+        align-items: flex-start;
+        overflow: visible; } }
     .use-cases-box .use-case-container .use-case-column {
       flex-basis: 25%;
       box-sizing: border-box;
@@ -344,9 +384,9 @@ a {
       .use-cases-box .use-case-container .use-case-item.case-4-12 {
         height: calc(75px * 4); }
       .use-cases-box .use-case-container .use-case-item.case-6-12 {
-        height: calc(75px*6); }
+        height: calc(75px * 6); }
       .use-cases-box .use-case-container .use-case-item.case-8-12 {
-        height: calc(75px*8); }
+        height: calc(75px * 8); }
       .use-cases-box .use-case-container .use-case-item .use-case-description {
         -webkit-transition: all 700ms ease-in-out;
         -moz-transition: all 700ms ease-in-out;
@@ -358,7 +398,6 @@ a {
         top: 0;
         right: 0;
         bottom: 0;
-        display: block;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -406,15 +445,20 @@ a {
   transform: scale(0);
   opacity: 0;
   visibility: visible;
-  box-shadow: inset 0 -3px 5px 0 rgba(0, 0, 0, 0.5);
-  visibility: visible;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.26);
   background-size: 100%; }
   @media only screen and (max-width: 425px) {
-    .case-full-description.show-mob-desc {
-      bottom: auto;
+    .case-full-description {
       transform: scale(1);
-      opacity: 1; } }
+      opacity: 1;
+      visibility: hidden;
+      display: none; }
+      .case-full-description.show-mob-desc {
+        visibility: visible;
+        display: block;
+        position: fixed;
+        bottom: 0;
+        transform: scale(1);
+        opacity: 1; } }
   .case-full-description .container {
     background-color: #fff;
     height: 100%;
@@ -435,7 +479,12 @@ a {
     justify-content: flex-start;
     color: #ffffff;
     background-size: cover;
-    cursor: pointer; }
+    box-sizing: border-box; }
+    @media only screen and (max-width: 425px) {
+      .case-full-description .modal-header {
+        align-items: flex-end;
+        padding-bottom: 35px;
+        height: 170px; } }
     .case-full-description .modal-header h2 {
       font-size: 20px;
       font-weight: bold;
@@ -443,18 +492,43 @@ a {
       letter-spacing: 1.1px;
       text-align: left;
       color: #ffffff; }
+      @media only screen and (max-width: 375px) {
+        .case-full-description .modal-header h2 {
+          font-size: 18px;
+          line-height: 25px;
+          letter-spacing: 1px; } }
     .case-full-description .modal-header .close-modal {
       outline: 0;
       border: 0;
+      padding: 10px;
       background-color: transparent;
       position: absolute;
-      right: 25px;
-      top: 25px;
+      right: 20px;
+      top: 20px;
       background-image: url("../img/landing/close.svg");
-      width: 25px;
-      height: 25px; }
+      background-size: 25px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      width: 35px;
+      height: 35px;
+      -webkit-transition: all 200ms ease-in-out;
+      -moz-transition: all 200ms ease-in-out;
+      -ms-transition: all 200ms ease-in-out;
+      -o-transition: all 200ms ease-in-out;
+      transition: all 200ms ease-in-out;
+      display: block;
+      cursor: pointer; }
+      .case-full-description .modal-header .close-modal:hover {
+        transform: rotate(180deg); }
+      .case-full-description .modal-header .close-modal svg {
+        cursor: pointer; }
   .case-full-description .modal-body {
-    padding: 50px 0; }
+    padding: 50px 0;
+    height: 600px;
+    overflow: auto; }
+    @media only screen and (max-width: 425px) {
+      .case-full-description .modal-body {
+        overflow: scroll; } }
 
 .modal-container {
   max-width: 660px;
@@ -462,10 +536,18 @@ a {
   margin-left: auto;
   margin-right: auto;
   box-sizing: border-box; }
+  @media only screen and (max-width: 425px) {
+    .modal-container {
+      padding: 0 20px; } }
   .modal-container.txt {
     border-left: 2px solid #00aaff;
     padding-left: 50px;
     margin-bottom: 50px; }
+    @media only screen and (max-width: 425px) {
+      .modal-container.txt {
+        border-left: 0;
+        padding-left: 20px;
+        padding-right: 20px; } }
     .modal-container.txt p {
       font-size: 16px;
       font-weight: 500;
@@ -482,6 +564,9 @@ a {
     text-align: left;
     position: relative;
     margin-bottom: 20px; }
+    @media only screen and (max-width: 425px) {
+      .modal-container.list ul li {
+        padding-left: 20px; } }
     .modal-container.list ul li::before {
       border-radius: 50%;
       position: absolute;
@@ -503,9 +588,9 @@ a {
   .case-img.img-4-12 {
     height: calc(75px * 4); }
   .case-img.img-6-12 {
-    height: calc(75px*6); }
+    height: calc(75px * 6); }
   .case-img.img-8-12 {
-    height: calc(75px*8); }
+    height: calc(75px * 8); }
 
 .contact-us-box {
   padding: 50px 0 80px;
@@ -516,12 +601,12 @@ a {
     box-sizing: border-box;
     margin-bottom: 20px; }
     .contact-us-box .input-group input {
-      height: 35px;
       font-size: 16px;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: 0.4px;
       text-align: left;
       color: #ffffff;
+      height: 35px;
       width: 100%;
       box-sizing: border-box;
       padding: 0 15px;
@@ -562,8 +647,9 @@ a {
         max-width: 200px;
         width: 100%; }
         .contact-us-box .input-group input[type="submit"]:hover {
-          background-color: transparent;
-          color: #57c6fd; }
+          background-color: #ffffff;
+          color: #4a4a4a;
+          border-color: #ffffff; }
     .contact-us-box .input-group .textarea {
       background-color: transparent;
       box-sizing: border-box;
@@ -571,7 +657,10 @@ a {
       width: 100%;
       height: 250px;
       color: #ffffff;
-      padding: 5px 15px; }
+      padding: 5px 15px;
+      font-size: 16px;
+      font-weight: 500;
+      letter-spacing: 0.4px; }
       .contact-us-box .input-group .textarea.placeholder {
         font-size: 16px;
         font-weight: 500;
@@ -673,7 +762,6 @@ a {
   .footer .to-top {
     margin-top: -30px;
     display: block;
-    position: absolute;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
@@ -698,6 +786,10 @@ a {
       margin-left: 10px;
       color: #fff; }
 
+@media only screen and (max-width: 425px) {
+  .careers-container {
+    box-sizing: border-box;
+    padding: 0 20px; } }
 .careers-container .back-to-list {
   font-size: 24px;
   font-weight: 600;
@@ -710,6 +802,9 @@ a {
   display: flex;
   align-items: center;
   margin-bottom: 80px; }
+  @media only screen and (max-width: 425px) {
+    .careers-container .back-to-list {
+      font-size: 23px; } }
   .careers-container .back-to-list img {
     margin-right: 15px; }
 .careers-container .input-group {
@@ -776,6 +871,9 @@ a {
     -ms-transition: all 300ms ease-in-out;
     -o-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out; }
+    @media only screen and (max-width: 425px) {
+      .careers-container .input-group .attach {
+        width: 100%; } }
     .careers-container .input-group .attach:hover {
       background-color: #57c6fd;
       color: #ffffff; }
@@ -811,7 +909,7 @@ a {
   padding: 100px 20px 125px 0; }
   @media only screen and (max-width: 425px) {
     .careers-container .description {
-      padding: 100px 0 125px; } }
+      padding: 50px 0 0 0; } }
   .careers-container .description .description-item p {
     font-size: 16px;
     font-weight: 400;
@@ -948,6 +1046,9 @@ a {
 .vacancy-list .vacancy-list-item {
   display: block;
   margin: 0 0 30px; }
+  @media only screen and (max-width: 425px) {
+    .vacancy-list .vacancy-list-item:last-of-type {
+      margin-bottom: 100px; } }
   .vacancy-list .vacancy-list-item a {
     font-size: 16px;
     font-weight: 400;
@@ -998,5 +1099,10 @@ a {
 
 .js #liquid_effect.render {
   opacity: 1; }
+
+.slider-top .swiper-slide {
+  visibility: hidden; }
+  .slider-top .swiper-slide.swiper-slide-active {
+    visibility: visible; }
 
 /*# sourceMappingURL=landing.css.map */
