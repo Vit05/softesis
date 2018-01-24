@@ -1,5 +1,5 @@
 # softesis
 
 - Page [landing](https://rawgit.com/Vit05/softesis/master/build/landing.html).
-- Page [List vacancys](https://rawgit.com/Vit05/softesis/master/build/vacancy-list.html)
-- Page [Details vacancy](https://rawgit.com/Vit05/softesis/master/build/vacancy-details.html)
+- Page [Careers](https://rawgit.com/Vit05/softesis/master/build/vacancy-list.html)
+- Page [Career details](https://github.com/Vit05/softesis/blob/master/build/vacancy-details.html)
