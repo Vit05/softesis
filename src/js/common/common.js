@@ -59,11 +59,15 @@ $(document).ready(function() {
       country:   'Please enter your country',
       phone:     {
         required: 'Please enter a phone number',
-        // minlength: "Your password must be at least 5 characters long"
       },
       email:     'Please enter a valid email address',
     },
+    submitHandler: function(form) {
+      window.location.href = "http://localhost:5000/success.html";
+    }
   });
+
+
 
 //
 //
@@ -191,10 +195,18 @@ for (var i = 0; i < spriteImages.length; i++) {
   spriteImagesSrc.push(img.getAttribute('src'));
 }
 var initCanvasSlideshow = new CanvasSlideshow({
-  sprites:           spriteImagesSrc,
+//  sprites:           spriteImagesSrc,
+//  displacementImage: 'img/landing/dmaps/2048x2048/clouds.jpg',
+//  autoPlay:          true,
+//  autoPlaySpeed:     [10, 3],
+//  fullScreen:        true
+
+  sprites: spriteImagesSrc,
   displacementImage: 'img/landing/dmaps/2048x2048/clouds.jpg',
-  autoPlay:          true,
-  autoPlaySpeed:     [10, 3],
-  fullScreen:        true
+  autoPlay: true,
+  autoPlaySpeed: [10, 3],
+  displaceScale: [20, 7],
+//  fullscreen:true
+
 
 });

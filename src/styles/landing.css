@@ -107,7 +107,7 @@ a {
       -o-transition: all 300ms ease-in-out;
       transition: all 300ms ease-in-out;
       border: 0;
-      padding: 00; }
+      padding: 0; }
       .nav-container a.get-started:hover {
         background-color: #ffffff;
         color: #4a4a4a; }
@@ -145,6 +145,54 @@ a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding-top: 15px; }
+
+.success-header {
+  height: 100px; }
+  .success-header #liquid_effect {
+    z-index: 10;
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    overflow: hidden; }
+    .success-header #liquid_effect canvas {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50px; }
+
+.success-container {
+  height: calc(100vh - 109px - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  @media only screen and (max-width: 425px) {
+    .success-container {
+      height: auto;
+      padding: 50px 0; } }
+  .success-container .success-btn {
+    width: 250px;
+    display: block;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: #57c6fd;
+    outline: 0;
+    line-height: 30px;
+    border: 2px solid #57c6fd;
+    margin: 30px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out; }
+    .success-container .success-btn:hover {
+      background-color: #57c6fd;
+      color: #ffffff; }
 
 .careers-header {
   height: 300px; }
@@ -261,6 +309,16 @@ a {
   padding-bottom: 50px; }
   .title-container.careers-title {
     justify-content: flex-start; }
+  .title-container.success-title {
+    flex-direction: column; }
+    .title-container.success-title .box-title {
+      margin-bottom: 50px; }
+      @media only screen and (max-width: 425px) {
+        .title-container.success-title .box-title {
+          border-bottom: 0;
+          padding: 0 35px; }
+          .title-container.success-title .box-title span {
+            display: block; } }
   .title-container .box-title {
     font-size: 24px;
     font-weight: 600;
@@ -611,7 +669,10 @@ a {
       box-sizing: border-box;
       padding: 0 15px;
       border: 1px solid #ffffff;
-      background-color: transparent; }
+      background-color: transparent;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      -webkit-appearance: none; }
       .contact-us-box .input-group input.placeholder {
         color: #ffffff; }
       .contact-us-box .input-group input:-moz-placeholder {
@@ -732,23 +793,9 @@ a {
       text-align: center; }
     @media only screen and (max-width: 425px) {
       .footer-info li {
-        flex-basis: 50%;
-        margin-bottom: 5px; }
-        .footer-info li:first-of-type {
-          flex-basis: 100%;
-          text-align: center; }
-        .footer-info li:nth-of-type(2) {
-          flex-basis: 100%;
-          text-align: center; }
-        .footer-info li:nth-of-type(3) {
-          flex-basis: 100%;
-          text-align: center; }
-        .footer-info li:nth-of-type(4) {
-          flex-basis: 50%;
-          text-align: left; }
-        .footer-info li:nth-of-type(5) {
-          flex-basis: 50%;
-          text-align: right; } }
+        flex-basis: 100%;
+        margin-bottom: 5px;
+        text-align: center; } }
 
 .footer {
   background-color: #4a4a4a;
@@ -759,6 +806,11 @@ a {
   padding-bottom: 70px;
   box-sizing: border-box;
   position: relative; }
+  .footer.success-footer {
+    padding: 50px 0 70px 0; }
+  @media only screen and (max-width: 425px) {
+    .footer {
+      padding-bottom: 35px; } }
   .footer .to-top {
     margin-top: -30px;
     display: block;
@@ -822,7 +874,10 @@ a {
     box-sizing: border-box;
     padding: 0 15px;
     border: 1px solid #4a4a4a;
-    background-color: transparent; }
+    background-color: transparent;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    -webkit-appearance: none; }
     .careers-container .input-group input.placeholder {
       color: #4a4a4a; }
     .careers-container .input-group input:-moz-placeholder {
@@ -1104,5 +1159,8 @@ a {
   visibility: hidden; }
   .slider-top .swiper-slide.swiper-slide-active {
     visibility: visible; }
+
+.slide-item__image {
+  width: 1920px; }
 
 /*# sourceMappingURL=landing.css.map */

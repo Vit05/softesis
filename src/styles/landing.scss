@@ -58,14 +58,14 @@ a {
       display: none;
     }
   }
-  .nav-item{
-    a{
+  .nav-item {
+    a {
       border-bottom: 3px solid transparent;
       padding-bottom: 5px;
     }
 
-    &.active{
-      a{
+    &.active {
+      a {
         border-color: $white;
       }
     }
@@ -92,7 +92,7 @@ a {
       line-height: 35px;
       @include trans();
       border: 0;
-      padding: 00;
+      padding: 0;
       &:hover {
         background-color: $white;
         color: $charcoal-grey;
@@ -138,6 +138,60 @@ a {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding-top: 15px;
+}
+
+.success-header {
+  height: 100px;
+  #liquid_effect {
+    z-index: 10;
+    height: 120px;
+    width: 100%;
+    position: absolute;
+    top: -40px;
+    overflow: hidden;
+
+    canvas {
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 50px;
+    }
+  }
+}
+
+.success-container {
+  height: calc(100vh - 109px - 180px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include respond-to(phone_6plus){
+    height: auto;
+    padding: 50px 0;
+  }
+  .success-btn {
+    width: 250px;
+    display: block;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    text-align: center;
+    color: $sky-blue-two;
+    outline: 0;
+    line-height: 30px;
+    border: 2px solid $sky-blue-two;
+    margin: 30px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    @include trans();
+    //@include respond-to(phone_6plus) {
+    //  width: 100%;
+    //}
+    &:hover {
+      background-color: $sky-blue-two;
+      color: $white;
+    }
+  }
 }
 
 .careers-header {
@@ -269,7 +323,6 @@ a {
         }
       }
 
-
     }
   }
 }
@@ -285,7 +338,19 @@ a {
   &.careers-title {
     justify-content: flex-start;
   }
-
+  &.success-title {
+    flex-direction: column;
+    .box-title {
+      margin-bottom: 50px;
+      @include respond-to(phone_6plus){
+        border-bottom: 0;
+        padding: 0 35px;
+        span{
+          display: block;
+        }
+      }
+    }
+  }
   .box-title {
     font-size: 24px;
     font-weight: 600;
@@ -652,7 +717,7 @@ a {
         text-align: left;
         position: relative;
         margin-bottom: 20px;
-        @include respond-to(phone_6plus){
+        @include respond-to(phone_6plus) {
           padding-left: 20px;
         }
 
@@ -721,6 +786,9 @@ a {
       padding: 0 15px;
       border: 1px solid $white;
       background-color: transparent;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      -webkit-appearance: none;
       @include input-placeholder {
         color: $white;
       }
@@ -832,31 +900,10 @@ a {
       text-align: center;
     }
     @include respond-to(phone_6plus) {
-      &:first-of-type {
-        flex-basis: 100%;
-        text-align: center;
-      }
 
-      &:nth-of-type(2) {
-        flex-basis: 100%;
-        text-align: center;
-      }
-
-      &:nth-of-type(3) {
-        flex-basis: 100%;
-        text-align: center;
-      }
-
-      &:nth-of-type(4) {
-        flex-basis: 50%;
-        text-align: left;
-      }
-      &:nth-of-type(5) {
-        flex-basis: 50%;
-        text-align: right;
-      }
-      flex-basis: 50%;
+      flex-basis: 100%;
       margin-bottom: 5px;
+      text-align: center;
     }
   }
 }
@@ -870,6 +917,12 @@ a {
   padding-bottom: 70px;
   box-sizing: border-box;
   position: relative;
+  &.success-footer{
+    padding: 50px 0 70px 0;
+  }
+  @include respond-to(phone_6plus){
+    padding-bottom: 35px;
+  }
 
   .to-top {
     margin-top: -30px;
@@ -925,9 +978,9 @@ a {
     display: flex;
     align-items: center;
     margin-bottom: 80px;
-@include respond-to(phone_6plus){
-  font-size: 23px;
-}
+    @include respond-to(phone_6plus) {
+      font-size: 23px;
+    }
     img {
       margin-right: 15px;
 
@@ -951,6 +1004,9 @@ a {
       padding: 0 15px;
       border: 1px solid $charcoal-grey;
       background-color: transparent;
+      -webkit-border-radius: 0;
+      border-radius: 0;
+      -webkit-appearance: none;
       @include input-placeholder {
         color: $charcoal-grey;
       }
@@ -1284,11 +1340,17 @@ a {
 .js #liquid_effect.render {
   opacity: 1;
 }
-.slider-top{
-  .swiper-slide{
+
+.slider-top {
+  .swiper-slide {
     visibility: hidden;
-    &.swiper-slide-active{
+    &.swiper-slide-active {
       visibility: visible;
     }
   }
+}
+
+
+.slide-item__image{
+  width: 1920px;
 }
